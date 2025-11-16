@@ -70,6 +70,8 @@ else
 		"menuconfig")
 			#echo 'menuconfig'
 			make ARCH=arm menuconfig
+			echo "Copying .config to arch/arm/configs/imx_v7_smartcar_defconfig"
+			cp .config arch/arm/configs/imx_v7_smartcar_defconfig
 			;;
 		"zImage")
 			#echo 'zImage'
@@ -81,8 +83,8 @@ else
 			#echo 'uImage'
 			make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j9 uImage LOADADDR=0x80800000
 			;;
-		"dtbs")
-			#echo 'dtb'
+		"dtb")
+			#echo 'dtbs'
 			make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- dtbs
 			echo "Copying arch/arm/boot/dts/imx6ull-14x14-smartcar.dtb to $TFTP_PATH"
 			cp arch/arm/boot/dts/imx6ull-14x14-smartcar.dtb $TFTP_PATH
