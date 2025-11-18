@@ -22,7 +22,7 @@ export TSLIB_CONFFILE=/etc/ts.conf
 export QT_QPA_GENERIC_PLUGINS=tslib:/dev/input/event1
 
 #qt 字库的目录
-export QT_QPA_FONTDIR=/fonts
+export QT_QPA_FONTDIR=/usr/share/fonts
 
 #qt 插件的目录
 export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins
