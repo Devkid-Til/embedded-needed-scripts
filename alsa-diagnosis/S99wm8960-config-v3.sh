@@ -3,6 +3,25 @@
 # Device: hw:0 (card 0)
 # Verification: All values match original configuration exactly
 # Generated: 2026-01-30
+#
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!! WARNIND: DON'T CHANGE ANYTHING !!!!!!!!!!!!!!!!!
+#
+# ONLY MODIFIED: 一、主播放控制（耳机/扬声器）
 
 set -e
 
@@ -12,22 +31,17 @@ echo "Restoring ALSA mixer settings for card 0 (57 controls)..."
 # 一、主播放控制（耳机/扬声器）
 # ============================================================================
 amixer -c 0 cset numid=10,iface=MIXER,name='Playback Volume' 242,242
-#amixer -c 0 cset numid=11,iface=MIXER,name='Headphone Playback Volume' 120,120
 amixer -c 0 cset numid=11,iface=MIXER,name='Headphone Playback Volume' 105,105
 amixer -c 0 cset numid=12,iface=MIXER,name='Headphone Playback ZC Switch' on,on
-#amixer -c 0 cset numid=13,iface=MIXER,name='Speaker Playback Volume' 120,120
 amixer -c 0 cset numid=13,iface=MIXER,name='Speaker Playback Volume' 105,105
 amixer -c 0 cset numid=14,iface=MIXER,name='Speaker Playback ZC Switch' on,on
-#amixer -c 0 cset numid=15,iface=MIXER,name='Speaker DC Volume' 2
 amixer -c 0 cset numid=15,iface=MIXER,name='Speaker DC Volume' 5
-#amixer -c 0 cset numid=16,iface=MIXER,name='Speaker AC Volume' 2
 amixer -c 0 cset numid=16,iface=MIXER,name='Speaker AC Volume' 5
 amixer -c 0 cset numid=17,iface=MIXER,name='PCM Playback -6dB Switch' off
 
 # ============================================================================
 # 二、主录音控制（Capture 通路）
 # ============================================================================
-#amixer -c 0 cset numid=1,iface=MIXER,name='Capture Volume' 0,0
 amixer -c 0 cset numid=1,iface=MIXER,name='Capture Volume' 40,40
 amixer -c 0 cset numid=2,iface=MIXER,name='Capture Volume ZC Switch' on,on
 amixer -c 0 cset numid=3,iface=MIXER,name='Capture Switch' on,on
@@ -120,6 +134,7 @@ echo ""echo ""
 echo "验证命令:"
 echo "  单声道测试: speaker-test -t sine -f 1000 -c 1 -l 5"
 echo "  立体声测试: speaker-test -t sine -f 1000 -c 2 -l 5"
-echo "  录音测试:  arecord -f S16_LE -r 48000 -d 5 test.wav && aplay test.wav"
-echo "  录音测试:  arecord -f S16_LE -r 48000 -d 5 -t raw -c 1 test_mono.pcm && aplay -f S16_LE -r 48000 -d 5 -t raw  -c 1 test_mono.pcm"
-echo "  录音测试:  arecord -f S16_LE -r 48000 -d 5 -t raw -c 2 test_stereo.pcm && aplay -f S16_LE -r 48000 -d 5 -t raw  -c 2 test_stereo.pcm"
+echo "  录音测试:  arecord -f S16_LE -r 16000 -d 5 test.wav && aplay test.wav"
+echo "  录音测试:  arecord -f S16_LE -r 16000 -d 5 -t raw -c 1 test_mono.pcm && aplay -f S16_LE -r 16000 -d 5 -t raw  -c 1 test_mono.pcm"
+echo "  录音测试:  arecord -f S16_LE -r 16000 -d 5 -t raw -c 2 test_stereo.pcm && aplay -f S16_LE -r 16000 -d 5 -t raw  -c 2 test_stereo.pcm"
+echo ""
