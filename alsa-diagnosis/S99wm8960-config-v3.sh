@@ -27,10 +27,13 @@ set -e
 
 echo "Restoring ALSA mixer settings for card 0 (57 controls)..."
 
+# softvol added into /etc/asound.conf
+#amixer sset SoftMaster 80%
+
 # ============================================================================
 # 一、主播放控制（耳机/扬声器）
 # ============================================================================
-amixer -c 0 cset numid=10,iface=MIXER,name='Playback Volume' 242,242
+amixer -c 0 cset numid=10,iface=MIXER,name='Playback Volume' 255,255
 amixer -c 0 cset numid=11,iface=MIXER,name='Headphone Playback Volume' 105,105
 amixer -c 0 cset numid=12,iface=MIXER,name='Headphone Playback ZC Switch' on,on
 amixer -c 0 cset numid=13,iface=MIXER,name='Speaker Playback Volume' 105,105
@@ -42,7 +45,7 @@ amixer -c 0 cset numid=17,iface=MIXER,name='PCM Playback -6dB Switch' off
 # ============================================================================
 # 二、主录音控制（Capture 通路）
 # ============================================================================
-amixer -c 0 cset numid=1,iface=MIXER,name='Capture Volume' 40,40
+amixer -c 0 cset numid=1,iface=MIXER,name='Capture Volume' 55,55
 amixer -c 0 cset numid=2,iface=MIXER,name='Capture Volume ZC Switch' on,on
 amixer -c 0 cset numid=3,iface=MIXER,name='Capture Switch' on,on
 amixer -c 0 cset numid=36,iface=MIXER,name='ADC PCM Capture Volume' 200,200
@@ -88,17 +91,17 @@ amixer -c 0 cset numid=8,iface=MIXER,name='Right Input Boost Mixer RINPUT1 Volum
 amixer -c 0 cset numid=47,iface=MIXER,name='Left Output Mixer PCM Playback Switch' on
 amixer -c 0 cset numid=49,iface=MIXER,name='Left Output Mixer Boost Bypass Switch' off
 amixer -c 0 cset numid=37,iface=MIXER,name='Left Output Mixer Boost Bypass Volume' 0
-amixer -c 0 cset numid=48,iface=MIXER,name='Left Output Mixer LINPUT3 Switch' on
-amixer -c 0 cset numid=38,iface=MIXER,name='Left Output Mixer LINPUT3 Volume' 7
+amixer -c 0 cset numid=48,iface=MIXER,name='Left Output Mixer LINPUT3 Switch' off
+amixer -c 0 cset numid=38,iface=MIXER,name='Left Output Mixer LINPUT3 Volume' 0
 
 # ============================================================================
-# 八、右声道输出混音器
+# 八、右声道输出混音器(don't set except PCM Playback Switch 'on', this is important)
 # ============================================================================
 amixer -c 0 cset numid=44,iface=MIXER,name='Right Output Mixer PCM Playback Switch' on
 amixer -c 0 cset numid=46,iface=MIXER,name='Right Output Mixer Boost Bypass Switch' off
 amixer -c 0 cset numid=39,iface=MIXER,name='Right Output Mixer Boost Bypass Volume' 0
-amixer -c 0 cset numid=45,iface=MIXER,name='Right Output Mixer RINPUT3 Switch' on
-amixer -c 0 cset numid=40,iface=MIXER,name='Right Output Mixer RINPUT3 Volume' 7
+amixer -c 0 cset numid=45,iface=MIXER,name='Right Output Mixer RINPUT3 Switch' off
+amixer -c 0 cset numid=40,iface=MIXER,name='Right Output Mixer RINPUT3 Volume' 0
 
 # ============================================================================
 # 九、单声道输出混音器
